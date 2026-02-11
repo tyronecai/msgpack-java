@@ -79,8 +79,9 @@ We strongly recommend to call `MessagePackMapper#handleBigIntegerAndBigDecimalAs
   // Serialize a List to byte array
   List<Object> list = new ArrayList<>();
   list.add("Foo");
-  list.add("Bar");
+  list.add(false);
   list.add(42);
+  list.add(3.14);
   byte[] bytes = objectMapper.writeValueAsBytes(list);
 
   // Deserialize the byte array to a List
@@ -92,12 +93,14 @@ We strongly recommend to call `MessagePackMapper#handleBigIntegerAndBigDecimalAs
 
 ```java
   // Instantiate ObjectMapper for MessagePack
-  ObjectMapper objectMapper = MessagePackMapper();
+  ObjectMapper objectMapper = new MessagePackMapper();
 
   // Serialize a Map to byte array
   Map<String, Object> map = new HashMap<>();
-  map.put("name", "komamitsu");
-  map.put("age", 42);
+  map.put("string", "komamitsu");
+  map.put("bool", false);
+  map.put("int", 42);
+  map.put("double", 3.1415926);
   byte[] bytes = objectMapper.writeValueAsBytes(map);
 
   // Deserialize the byte array to a Map
